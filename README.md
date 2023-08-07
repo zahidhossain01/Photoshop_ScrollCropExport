@@ -2,4 +2,5 @@
 
 Crop individual cells from a row of cells assembled on one canvas
 
-Image Example Here
+![Photoshop grid of cells](./img/PhotoshopGridScreenshot.png)
+![Desired output](./img/Screenshot_desiredFileOutput.png)
