@@ -1,0 +1,66 @@
+// =======================================================
+var idsave = charIDToTypeID( "save" );
+    var desc304 = new ActionDescriptor();
+    var idAs = charIDToTypeID( "As  " );
+        var desc305 = new ActionDescriptor();
+        var idEQlt = charIDToTypeID( "EQlt" );
+        desc305.putInteger( idEQlt, 12 );
+        var idMttC = charIDToTypeID( "MttC" );
+        var idMttC = charIDToTypeID( "MttC" );
+        var idNone = charIDToTypeID( "None" );
+        desc305.putEnumerated( idMttC, idMttC, idNone );
+    var idJPEG = charIDToTypeID( "JPEG" );
+    desc304.putObject( idAs, idJPEG, desc305 );
+    var idIn = charIDToTypeID( "In  " );
+    desc304.putPath( idIn, new File( "C:\\Users\\zpang\\Documents\\Photoshop\\Scripting\\ScrollCropExport\\newtestname.jpg" ) );
+    var idDocI = charIDToTypeID( "DocI" );
+    desc304.putInteger( idDocI, 59 );
+    var idCpy = charIDToTypeID( "Cpy " );
+    desc304.putBoolean( idCpy, true );
+    var idLwCs = charIDToTypeID( "LwCs" );
+    desc304.putBoolean( idLwCs, true );
+    var idsaveStage = stringIDToTypeID( "saveStage" );
+    var idsaveStageType = stringIDToTypeID( "saveStageType" );
+    var idsaveBegin = stringIDToTypeID( "saveBegin" );
+    desc304.putEnumerated( idsaveStage, idsaveStageType, idsaveBegin );
+executeAction( idsave, desc304, DialogModes.NO );
+
+// =======================================================
+var idsave = charIDToTypeID( "save" );
+    var desc306 = new ActionDescriptor();
+    var idAs = charIDToTypeID( "As  " );
+        var desc307 = new ActionDescriptor();
+        var idEQlt = charIDToTypeID( "EQlt" );
+        desc307.putInteger( idEQlt, 12 );
+        var idMttC = charIDToTypeID( "MttC" );
+        var idMttC = charIDToTypeID( "MttC" );
+        var idNone = charIDToTypeID( "None" );
+        desc307.putEnumerated( idMttC, idMttC, idNone );
+    var idJPEG = charIDToTypeID( "JPEG" );
+    desc306.putObject( idAs, idJPEG, desc307 );
+    var idIn = charIDToTypeID( "In  " );
+    desc306.putPath( idIn, new File( "C:\\Users\\zpang\\Documents\\Photoshop\\Scripting\\ScrollCropExport\\newtestname.jpg" ) );
+    var idDocI = charIDToTypeID( "DocI" );
+    desc306.putInteger( idDocI, 59 );
+    var idCpy = charIDToTypeID( "Cpy " );
+    desc306.putBoolean( idCpy, true );
+    var idLwCs = charIDToTypeID( "LwCs" );
+    desc306.putBoolean( idLwCs, true );
+    var idsaveStage = stringIDToTypeID( "saveStage" );
+    var idsaveStageType = stringIDToTypeID( "saveStageType" );
+    var idsaveSucceeded = stringIDToTypeID( "saveSucceeded" );
+    desc306.putEnumerated( idsaveStage, idsaveStageType, idsaveSucceeded );
+executeAction( idsave, desc306, DialogModes.NO );
+
+// =======================================================
+var idbackgroundSaveCompleted = stringIDToTypeID( "backgroundSaveCompleted" );
+    var desc308 = new ActionDescriptor();
+    var idDocI = charIDToTypeID( "DocI" );
+    desc308.putInteger( idDocI, 59 );
+    var idsaveScheduleMode = stringIDToTypeID( "saveScheduleMode" );
+    desc308.putString( idsaveScheduleMode, """auto""" );
+    var iddontRecord = stringIDToTypeID( "dontRecord" );
+    desc308.putBoolean( iddontRecord, true );
+    var idforceNotify = stringIDToTypeID( "forceNotify" );
+    desc308.putBoolean( idforceNotify, true );
+executeAction( idbackgroundSaveCompleted, desc308, DialogModes.NO );
