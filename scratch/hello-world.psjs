@@ -1,0 +1,3 @@
+// Trying UXP scripting
+
+require('photoshop').core.showAlert('Hello world!')
