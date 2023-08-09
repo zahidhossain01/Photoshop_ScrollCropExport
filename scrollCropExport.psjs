@@ -1,43 +1,51 @@
-const app = require('photoshop').app;
+const {app, constants} = require('photoshop');
 const ufs = require('uxp').storage.localFileSystem;
-const psAction = require("photoshop").action;
+const domains = require('uxp').storage.domains;
 
-app.activeDocument.duplicate();
 
-async function main(executionContext){
+// app.preferences.unitsAndRulers.rulerUnits = PIXELS;
+app.preferences.unitsAndRulers.rulerUnits = constants.RulerUnits.PIXELS;
+const initialDoc = app.activeDocument;
+const dir = path.dirname(initialDoc.path);
 
-    
-    
+let cell_width = 1080;
+let cell_height = 1350;
+let prefix = "prefix";
 
-    // Set App Ruler Units to px
-    app.preferences.unitsAndRulers.rulerUnits = PIXELS; // not really sure if this is doing anything
-    
+let n = Math.floor(initialDoc.width / cell_width);
 
-    // Get Cell Dimensions
-    let cell_width = 1080;
-    let cell_height = 1350;
 
-    // Calculate number of cells
-    let n = Math.floor(doc.width / cell_width);
+// let b1 = {left: 0,top: 0,right: 1080,bottom: 1350};
+// let b2 = {left: 1080,top: 0,right: 1080*2,bottom: 1350};
+// let bounds_reset = {left: (1-8)*1080,top: 0,right: 1080,bottom: 1350};
+// doc.crop(b1);
 
-    // Create a duplicate document and merge all into smart object
-    // const doc = app.activeDocument;
-    const doc = await app.activeDocument.duplicate();
-    let layers = doc.layers;
-    
-    //******* */
-
-    // solution to cropping without deleting: group everything into a smart object first lmao
-    // holy shit the crop reset works too
-    // buttttt I see no feature to create smart objects
-    // so I need to try the extendscript method using batchPlay OR do the ugly multi doc copy thing
-
-    // let b1 = {left: 0,top: 0,right: 1080,bottom: 1350};
-    // let b2 = {left: 1080,top: 0,right: 1080*2,bottom: 1350};
-    // let bounds_reset = {left: (1-8)*1080,top: 0,right: 1080,bottom: 1350};
-    // doc.crop(b1);
-    
+doc_crop_array = [];
+for(i = 0; i < n; i++){
+    newDoc = await initialDoc.duplicate();
+    cropBounds = {left: i*cell_width, top: 0, right: (i+1)*cell_width, bottom: cell_height};
+    doc_crop_pair = {
+        doc: newDoc,
+        bounds: cropBounds
+    }
+    doc_crop_array.push(doc_crop_pair);
 }
 
+for(i = 0; i < doc_crop_array.length; i++){
+    let doc_crop_pair = doc_crop_array[i];
+    let doc_i = doc_crop_pair.doc;
+    let bounds = doc_crop_pair.bounds;
+    let filename = prefix+'_'+(i+1)+'.jpg';
+    console.log(filename);
 
-await require('photoshop').core.executeAsModal(main);
+    try {
+        let file_i = await ufs.getFileForSaving(filename);
+        doc_i.crop(bounds);
+        doc_i.saveAs.jpg(file_i, {quality: 12, embedColorProfile: true}, true);
+    } catch (e) {
+        console.log(e);
+    }
+
+    doc_i.closeWithoutSaving();
+}
+

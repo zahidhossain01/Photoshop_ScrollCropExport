@@ -1,0 +1,12 @@
+const app = require('photoshop').app;
+
+let docs = app.documents;
+
+// close all except first doc
+for(i = 1; i < docs.length; i++){
+    docs[i].closeWithoutSaving();
+}
+
+// not really working lol, but it does close docs...
+
+
