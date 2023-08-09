@@ -1,3 +1,4 @@
 // Trying UXP scripting
 
 require('photoshop').core.showAlert('Hello world!')
+console.log("Hello World!");
