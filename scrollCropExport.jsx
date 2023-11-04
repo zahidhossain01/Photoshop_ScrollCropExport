@@ -64,7 +64,7 @@ function save_sl(doc, filename){
 
     var idAs = charIDToTypeID( "As  " );
     var descSaveAs = new ActionDescriptor();
-    descSaveAs.putInteger( charIDToTypeID( "EQlt" );, 12 );
+    descSaveAs.putInteger( charIDToTypeID( "EQlt" ), 12 );
     var idMttC = charIDToTypeID( "MttC" );
     var idNone = charIDToTypeID( "None" );
     descSaveAs.putEnumerated( idMttC, idMttC, idNone );
