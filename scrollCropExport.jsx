@@ -69,7 +69,7 @@ function save_sl(doc, filename){
     var idNone = charIDToTypeID( "None" );
     descSaveAs.putEnumerated( idMttC, idMttC, idNone );
 
-    desc.putObject( idAs, charIDToTypeID( "JPEG" );, descSaveAs );
+    desc.putObject( idAs, charIDToTypeID( "JPEG" ), descSaveAs );
     var idIn = charIDToTypeID( "In  " );
     desc.putPath( idIn, new File( doc.path + '/' + filename + '.jpg' ) );
     desc.putInteger( charIDToTypeID( "DocI" ), 59 );
