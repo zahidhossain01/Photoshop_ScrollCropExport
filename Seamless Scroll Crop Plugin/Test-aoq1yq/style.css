@@ -1,0 +1,8 @@
+body {
+  color: white;
+  padding: 0 16px;
+}
+
+sp-button {
+  margin-right: auto; /* not sure how else to left align button */
+}
